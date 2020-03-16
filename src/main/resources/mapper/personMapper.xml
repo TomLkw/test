@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lkw.st.test.mapper.PersonMapper">
+
+    <select id="getAllPerson" resultType="com.lkw.st.test.bean.Person">
+        SELECT * FROM person
+    </select>
+    <insert id="addPerson"  parameterType="com.lkw.st.test.bean.Person" >
+        insert into person (name,is_delete) values (#{name},#{isDelete})
+    </insert>
+    <update id="deletePerson" parameterType="java.lang.Integer">
+        update person set is_delete = 1 where id = #{id}
+    </update>
+    <update id="updatePerson" parameterType="com.lkw.st.test.bean.Person">
+        update person set name=#{name},is_delete=#{isDelete} where id = #{id}
+    </update>
+    <select id="selectPersonById" parameterType="com.lkw.st.test.bean.Person">
+        select * from person where id = #{id}
+    </select>
+<!--    <delete id="delById" parameterType="java.lang.Integer">-->
+<!--        delete from user where id = ${id}-->
+<!--     </delete>-->
+<!--    <insert id="save" parameterType="com.yy.domo.user.entity.User">-->
+<!--        insert into user(username,password,createtime,status)values (#{username},#{password},#{createtime}, #{status})-->
+<!--    </insert>-->
+</mapper>
